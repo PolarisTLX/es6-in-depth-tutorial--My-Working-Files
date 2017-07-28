@@ -7,6 +7,10 @@ console.log(typeof document);
 document.getElementById('example').innerHTML = "This text has been replaced with JS!";
 
 
+//I NEVER KNEW THI SBEFORE!!
+// Variables reserve special identifiers that point to values. 
+// JavaScript does not recognize variables that start
+// with anything but characters a-z, the ‘$’, or the ‘_’.
 
 
 // object example practice:
@@ -43,3 +47,36 @@ switch(x) {
 
 
 //NOTE THAT THE BREAKS IS NECESSARY!!! can test by testing for x = 1
+
+
+
+// Review while loop versus do while loop:
+
+// while loop:
+let i = 0;
+while (i < 10) {
+  console.log(i);
+  i++;
+}
+
+
+// do while loop:  this always executes AT LEAST ONCE NO MATTER THE CONDITION!
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 10);
+
+//to show that it only checks the condition after:
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 0);
+
+//or this which does nothing
+let i = 0;
+while (i < 0) {
+  console.log(i);
+  i++;
+}

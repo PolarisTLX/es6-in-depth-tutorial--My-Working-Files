@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+  <script type="text/javascript">
+
+
+//.map practice
+  let values = [20, 30, 40];
+
+  let double = (n) => n*2;
+
+  let doubled = values.map(double);
+  console.log(doubled);
+  //returns [40, 60, 80]
+
+
+  //this can be shortened like so:
+  let values2 = [20, 30, 40];
+
+  let doubled2 = values.map((n) => n*2);
+  console.log(doubled2);
+  //returns [40, 60, 80]
+
+
+
+  //.filter practice
+  let points = [7, 16, 21, 4, 3, 22, 5];
+
+  let highScores = points.filter((n) => n > 15);
+  console.log(highScores);
+
+
+
+
+  </script>
+</html>

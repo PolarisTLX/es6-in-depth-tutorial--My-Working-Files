@@ -1,0 +1,36 @@
+<html>
+
+<script>
+
+//ES6 Template Literals which are backticks `${}`
+let a = `good`;
+let greeting = `${a} morning`;
+console.log(a);
+console.log(greeting);
+
+let b = 'birthday';
+let c = `Happy ${b}`;
+console.log(c);
+
+
+//spread operator  [...]
+
+let d = [20, 30, 40];
+let e = [10, ...d, 50];
+console.log(e);
+
+let f = ['Dana', 'Eric', 'Steph'];
+let g = ['Alice', 'Andrew', 'Pixel', ...f];
+console.log(g);
+
+
+//rest operator   function name(...) {
+
+function collect(...h) {
+  console.log(h);
+}
+
+collect (1,2,3,4,5);
+
+</script>
+</html>

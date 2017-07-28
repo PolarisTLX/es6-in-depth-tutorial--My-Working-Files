@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+<script type="text/javascript">
+
+
+//not an anonymous function,
+//it has a name that is declared
+//(function declaration, like "let = ")
+function cheer() {
+  console.log("Woohoo!");
+}
+cheer();
+
+
+//to make it an anonymous function:
+//this is a function expression, instead of declaration
+//called "anonymous function expression"
+let cheer2 = function() {
+  console.log("Woohoo!");
+}
+cheer2();
+
+
+//to better explain:
+setTimeout(function(){
+  console.log("Woohoo!");
+}, 3000);  //consoles after 3s
+
+
+//using ES6 to change anonymous function to arrow function
+//NOTE ES6 arrow functions are anonymous by default
+//because they are not declared
+setTimeout(() =>
+  console.log("Woohoo!")
+, 3500);  //consoles after 3.5s
+
+
+//using ES6 arrow function as a declared function
+//with a name that can be used later
+let cheer3 = () =>
+  console.log("Woohoo Declared Arrow Funtions!");
+
+//NOTE that the {}  are not needed, but can be used if it is cleaner
+cheer3();
+
+
+</script>
+
+</html>

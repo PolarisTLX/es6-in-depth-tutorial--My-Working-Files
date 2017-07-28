@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+
+  <script>
+
+let z = [4, 5, 6];
+// let four = z[0];
+// let five = z[1];
+// console.log(four, five);
+
+//Destructing on Arrays
+//in ES6, this can be shorter using destructing
+
+let [four, five] = z;
+console.log(four, five);
+
+
+let animals = ["simba", "zazu", "Timon", "Pumba"];
+let [lion, bird] = animals;
+let [ , ,meercat, pig] = animals;
+
+console.log(lion, bird);
+console.log(meercat, pig);
+
+
+//another example for Destructuring on Objects
+let king = {name: 'Mufasa', kids: 1};
+let name = king.name;
+let kids = king.kids;
+console.log(name, kids);
+
+//using ES6 Destructuring:
+let Ironman = {realname: 'Tony Stark', colors: 2};
+let {realname, colors} = Ironman;
+console.log(realname, colors);
+//this seems to just remove some of the redundancy, but seems limited
+
+//another example
+let son = { childname: 'Simba', parents: 2 };
+let childname, parents;
+//{childname, parents} = son; //this does not work due to local code block {}
+({childname, parents} = son);  //the round brackets around the whole thing solves this?
+console.log(childname, parents);
+
+  </script>
+</html>
