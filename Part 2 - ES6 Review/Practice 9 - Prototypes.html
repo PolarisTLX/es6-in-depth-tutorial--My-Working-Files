@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+  <script type="text/javascript">
+
+//PROTOTYPES
+
+  //Classes are nicer way to present the prototype code (below) for people who are more used to an object oriented backround.
+  //Classes are just wrapped up prototypes,
+  //and prototypes are just functions
+  //it really is just nicer
+
+function Wizard(name, house, pet) {
+  this.name = name;
+  this.house = house;
+  this.pet = pet;
+
+  this.greet = () =>
+    `I'm ${this.name} from ${this.house}.`;
+}
+
+
+let harry = new Wizard("Harry", "Gryffindor", "Owl");
+console.log(harry);
+
+//console.log(harry.greet);  //this does not working
+console.log(harry.greet());
+
+
+Wizard.prototype.pet_name;
+//this adds a pet_name property to the protype
+//as if we did so in the prototype declaration
+
+harry.pet_name = "Hedwig";
+console.log(harry);
+
+// Wizard.prototype.info = () => {
+//   return `I have a ${this.pet} named ${this.pet_name}.`
+// };
+//this does not work because the arrow => function does not create a 'this' object that can be refereced
+//to solve this, use normal function decleration:
+
+Wizard.prototype.info = function() {
+  return `I have a ${this.pet} named ${this.pet_name}.`
+};
+//now it works
+
+console.log(harry.info());
+
+  </script>
+</html>

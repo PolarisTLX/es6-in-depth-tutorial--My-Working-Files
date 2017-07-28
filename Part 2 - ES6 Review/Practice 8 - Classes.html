@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+
+<script type="text/javascript">
+
+class Animal {
+  constructor(name1, height1) {
+    this.name = name1;
+    this.height = height1;
+  }
+
+  hello() {
+    console.log(`Hi! I'm ${this.name} from the Animal kingdon.`);
+  }
+}
+
+let king = new Animal("Mufasa", 4.5);
+console.log(king);
+king.hello();
+// hello();  //this line will not work
+
+
+//can import the above information which has been transfered to a seperate js file
+//but import/export does not seem to be working
+//import Animal from './animal';
+
+
+
+//create a child class off of a parent class
+class Lion extends Animal {
+  constructor(name, height, color) {
+    super(name, height);
+    //what characteristics you inherit from the parent
+    this.color = color
+    //then what additional characteristics you want only this child class to have
+  }
+  hello() {
+    console.log(`Hi! I'm ${this.name} from Pride Rock.`);
+  }
+}
+
+let son = new Lion("Simba", 2, "auburn");
+console.log(son);
+
+son.hello();
+
+
+//STATIC METHODS
+console.log("Next Lesson: Static Methods");
+
+class Calculator {
+  static multiply(a, b) {
+    return a*b;
+  }
+
+  static add(a, b) {
+    return a+b;
+  }
+}
+
+let a = Calculator.multiply(5, 7);
+console.log(a);
+let b = Calculator.add(5, 7);
+console.log(b);
+
+</script>
+
+</html>
