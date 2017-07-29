@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+
+  <script type="text/javascript">
+
+
+  Prototype a Vehicle
+
+  Let's practice prototypes in JavaScript by working with prototypes. In this example, we already have a Vehicle Prototype that allows us to create Vehicles with a "make" and "year". However, we want to add more functionality to this prototype. Note that there's already an instance of this Vehicle prototype:
+
+  let s = new Vehicle("Tesla", 2017);
+  s.color = "black";
+
+  // TODO
+  // * add a 'color' field to the prototype
+  // * add a 'bio' method that *returns*:
+  //      A ${this.color} ${this.make} made in ${this.year}.
+
+  function Vehicle(make, year) {
+    this.make = make;
+    this.year = year;
+  }
+
+//WHAT I DID THAT WAS CORRECT
+  Vehicle.prototype.color;
+
+  Vehicle.prototype.bio = function() {
+      return `A ${this.color} ${this.make} made in ${this.year}.`
+  };
+  //END OF WHAT I DID
+
+
+  let s = new Vehicle("Tesla", 2017);
+  s.color = "black";
+
+
+
+  ProtoType a Vehicle | Solution
+
+  You could have taken one of two approaches:
+
+  1)
+
+  function Vehicle(make, year) {
+    this.make = make;
+    this.year = year;
+  }
+  Vehicle.prototype.color;
+  Vehicle.prototype.bio = function() {
+    return `A ${this.color} ${this.make} made in ${this.year}.`;
+  };
+  let s = new Vehicle("Tesla", 2017);
+  s.color = "black";
+  In this solution, the prototype keyword for adding the bio cannot use an arrow function. Arrow functions ignore the ‘this’ object which we need to update the Vehicle prototype. So, we see a classic function declaration.
+
+  2)
+
+  function Vehicle(make, year, color) {
+    this.make = make;
+    this.year = year;
+    this.color = color;
+    this.bio = () => `A ${this.color} ${this.make} made in ${this.year}.`;
+  }
+  let s = new Vehicle("Tesla", 2017);
+  s.color = "black";
+
+
+  </script>
+</html>
