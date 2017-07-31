@@ -1,0 +1,63 @@
+//from when I was just adding some of the next stuff to the index.js file but should have left it alone
+
+// let limit = 100;
+// limit += 100;
+// console.log(limit);
+
+const limit2 = 400;
+console.log(limit2);
+
+const emails = ['frodo@email.com', 'samwise@email.com', 'merry@email.com'];
+// emails = [];  cannot mute a const
+//but can still do things like .push()
+
+emails.push('pippin@email.com');
+console.log(emails);
+//can remember that anything involving "=" sign will not work on a const,
+//as that is a re-asignment, but other things will
+
+
+//to demonstrate difference between let and var
+
+let limit = 200;
+{
+  let limit = 10;
+  console.log('backstage limit', limit);
+}
+console.log('overall venue limit', limit);
+//this shows that limit does not get re-written,
+//because the { } create a local scope
+
+var limit3 = 200;
+{
+  var limit3 = 10;
+  console.log('backstage3 limit', limit3);
+}
+console.log('overall venue3 limit', limit3);
+//in this case the {} do not protect the variable
+//block scoping does not work/protect vars
+
+const limit4 = 200;
+{
+  const limit4 = 10;
+  console.log('backstage4 limit', limit4);
+}
+console.log('overall venue4 limit', limit4);
+
+
+function hello() {
+  let message = "Hello!";
+  console.log(message);
+}
+
+function greeting() {
+  let message = "How are you?";
+  console.log(message);
+}
+
+hello();
+greeting();
+//both print a different message,
+//which shows that the {} block scoping
+//of the functions protects the two lets,
+//and the two let message =  don't interfere with each other

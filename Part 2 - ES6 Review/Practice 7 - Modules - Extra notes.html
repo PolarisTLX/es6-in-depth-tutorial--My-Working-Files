@@ -1,0 +1,10 @@
+module.exports = {    //inside the {} is a JSON object
+  entry: ['./app/index.js']  //this is the js file that it looks for
+
+//we want to target that bundle.js file  that our index.html is trying to refer to
+
+  output: {         //so webpack is going to move all the code from index.js to bundle.js
+    path: './build',    //here we send the data to the build folder we made for our project
+    filename: 'bundle.js'    //this is where we want to send the index.js code to, combining both js codes
+  }
+}
