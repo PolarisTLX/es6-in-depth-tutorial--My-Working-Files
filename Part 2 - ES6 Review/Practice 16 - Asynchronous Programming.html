@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+<script type="text/javascript">
+
+//Asynchronous Programming
+
+//Synchronous programs run completely from top to bottom
+
+//asynchronous programs can keep running even with an interuption
+//they do this by diverting clocks to another handler
+
+
+//Why use this?
+//UI's and browsers, are asynchronous/random by nature,
+//as human interaction is random
+
+//Promises allow asynchronous functions in ES6
+
+//Promises can be 1 of 3 things:
+//Pending,  Fulfilled,  Rejected
+
+//"resolve" handles successful promise calls
+//"reject" handles promises that can't determine a value
+
+let p = new Promise((resolve, reject) => {
+//for resolvable promises:
+  //resolve('Resolved promise data');
+
+//for rejected promises:
+  //reject('Promise data that has been Rejected');
+
+//for promises that are pending / take a bit of time:
+  setTimeout(() => resolve('Resolved promise data'), 3000);
+})
+
+//consuming the process = resolving a promise?
+
+p.then(response => console.log(response))
+//below is for rejected outcome:
+//if no resolved data is found in the promise,
+//then passes the flow of data to our catch statement
+  .catch(error => console.log(error));
+
+//NOTE that this log below will post to console before the 3s are done is the setTimeout possibility above
+console.log('after promise consumption');
+
+
+</script>
+
+</html>
