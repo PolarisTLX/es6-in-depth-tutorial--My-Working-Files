@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+<script type="text/javascript">
+
+//Maps
+//Maps have keys + values
+//Maps can only have 1 Key
+//Maps to objects are like Sets to Arrays
+//they can only contain unique entries
+
+//differences to objects are:
+//better flexibility in naming the keys, and easy to get the size
+
+let a = new Map();
+
+//to add to a map, we use .set(key:value), instead of .push or .add
+
+let key_1 = "String1";
+a.set(key_1, 'return value for this string');
+console.log(a);
+
+//in Es6 objects can also be keys
+let key_2 = {a: 'key'};
+a.set(key_2, 'return value that is an object');
+console.log(a);
+
+//in Es6 functions can also be keys
+let key_3 = function() {};
+a.set(key_3, 'return value that is aa function');
+console.log(a);
+
+
+//how to iterate through a map for their keys and values
+let numArr = [[1, 'one'], [2, 'two'], [3, 'three']];
+let valMap = new Map(numArr);
+console.log(valMap);
+
+for (let [key, value] of valMap.entries()){
+  console.log(key, value);
+}
+for (let [key, value] of valMap.entries()){
+  console.log(`${key} points to ${value}`);
+}
+
+
+//a problem:
+//count the number of each letter in a string
+let string = 'mpaspamplpospmwpaplwm';
+let letters = new Map();
+
+for (i = 0; i < string.length; i++) {
+  let letter = string[i];
+  if (letters.has(letter) == false) {
+    //can also write:   if(!letter.has(letter))
+    letters.set(letter, 1);
+  }
+  else {
+    letters.set(letter, letters.get(letter) + 1);
+    //that letter, will now be turned into: it's current value + 1
+  }
+}
+
+console.log(letters);
+
+
+
+//QUIZ:
+/*
+How Many Times Does this Letter Appear? (Maps)
+
+Count some letters in Mary Poppins's favorite word:
+supercalifragilisticexpialidocious.
+
+**Directions:**
+Address the three todos to fix the countLetter function.
+First, create the 'letters' map. Secondly, add a letter
+to the map if it doesn't exist in the map yet.
+Finally, update any encountered letters
+if they already exist in the map.
+*/
+
+
+let string = 'supercalifragilisticexpialidocious';
+
+const countLetter = (word, orig_letter) => {
+  // TODO Create a map called 'letters'
+  let letters = new Map();
+  for (let i=0; i<word.length; i++) {
+    let letter = word[i];
+    if (!letters.has(letter)) {
+      // TODO set the letter in the map to 1
+      letters.set(letter, 1);
+    } else {
+      // TODO update the value of letter in letters to its value + 1
+      letters.set(letter, letters.get(letter) +1);
+    }
+  }
+  return letters.get(orig_letter);
+};
+
+let a_count = countLetter(string, 'a');
+let x_count = countLetter(string, 'x');
+
+
+</script>
+
+
+</html>

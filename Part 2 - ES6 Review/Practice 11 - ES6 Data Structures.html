@@ -1,4 +1,4 @@
-//Sets are arrays that can only have unique values
+<!-- Sets are arrays that can only have unique values -->
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,77 @@
 
 <script type="text/javascript">
 
+let a = new Set ();
+
+//sets have .add instead of .push?
+
+a.add(5);
+a.add(43);
+a.add("Woohoo");
+a.add({x: 50, y: 200});
+
+console.log(a);
+console.log(a.size);
+console.log(a.has(5));
+console.log(a.has(7));
+
+
+//convert entire arrays
+
+let numbers = [5, 7, 8, 13 ,17];
+console.log(numbers);
+
+let numSet = new Set (numbers);
+console.log(numSet);
+
+//it will autimatically remove duplicates
+let numbers2 = [5, 5, 7, 8, 13 ,17];
+console.log(numbers2);
+
+let numSet2 = new Set (numbers2);
+console.log(numSet2);
+
+
+//how to print each element in the set individually
+//numSet.values() is an iterable list of all the values in a set
+for (let element of numSet.values()) {
+  console.log(element);
+}
+
+console.log("How many unique characters problem?");
+//example: you have a long string of random characters
+//how to find out all the unique characters in that string?
+let chars = 'asppspprowolpsp';
+console.log(chars.length);
+let chars_arr = chars.split("");
+let chars_set = new Set(chars_arr);
+
+console.log(chars_set);
+
+
+//Quiz:
+/*
+Does this Word Contain this Letter? (Sets)
+
+Let's implement our own version of String.includes()!
+
+**Directions:**
+Make two changes to the given contains function.
+Convert the letters array split on the argued words
+to a set of unique characters. Then return (a true/false value)
+based whether or not the set has the argued letter*/
+
+
+const contains = (word, letter) => {
+  let letters = word.split("");
+  // TODO create a set with the above 'letters' array
+  // TODO return whether the set has the 'letter'
+  let letters_set = new Set(letters);
+  return letters_set.has(letter);
+};
+
+let true_check = contains("west", "e");
+let false_check = contains("north", "e");
 
 
 </script>

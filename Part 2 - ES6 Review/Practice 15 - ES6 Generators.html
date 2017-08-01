@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+<script type="text/javascript">
+
+//ES6 Generators:
+//function*
+
+//Generators can pause using "yield" and resume using ".next()"
+
+function* letterMaker() {
+  yield 'a';
+  yield 'b';
+  yield 'c';
+}
+
+let letterGen = letterMaker();
+//NOTE we don't use " = new ...()" for making new generators
+
+console.log(letterGen.next().value);  //logs  "a"
+console.log(letterGen.next().value);  //logs  "b"
+console.log(letterGen.next().value);  //logs  "c"
+console.log(letterGen.next().value);  //logs "undefined"  as no more to log
+
+
+
+//customers example:
+function* countMaker()  {
+  let count = 0;
+  while (count < 3) {
+    yield count += 1;
+  }
+}
+
+let countGen = countMaker();
+console.log(countGen.next().value);  //logs  "1"
+console.log(countGen.next().value);  //logs  "2"
+console.log(countGen.next().value);  //logs  "3"
+console.log(countGen.next().value);  //logs "undefined"  as we reached our conditioned limit
+
+
+//reset capability:
+function* evens() {
+  let count = 0;
+  //this loop would normally be endless and never break
+  while(true) {
+    count += 2;
+    //yield count;
+         //to allow reset:
+    let reset = yield count;
+    if (reset == true) {
+      count = 0;
+    }
+  }
+}
+
+let sequence = evens();
+console.log(sequence.next().value);  //logs  "2"
+console.log(sequence.next().value);  //logs  "4"
+console.log(sequence.next().value);  //logs  "6"
+
+//to trigger the reset:
+console.log(sequence.next(true).value);  //logs '2'
+console.log(sequence.next().value);      //logs '4'
+
+
+
+//Generators VS Iterators
+
+console.log("Next Lesson: classic iterator");
+//Iterator:
+const arrayIterator = (array) => {
+  let index = 0;
+
+  return {
+    next: () => {
+      if (index < array.length) {
+        let next = array[index];
+        index += 1;
+        return next;
+      }
+    }
+  }
+}
+
+let it = arrayIterator([1, 2, 3]);
+console.log(it.next());  //log '1'
+console.log(it.next());  //log '2'
+console.log(it.next());  //log '3'
+console.log(it.next());  //log 'undefined'
+
+//Now doing it with an ES6 Generator:
+console.log("Now doing it with an ES6 Generator:");
+
+function* ArrayItertor2() {
+  //if you want it all loged at the same time:
+  //yield arguments;
+
+  //Now to get them one at at time:
+      //long version:
+  // for (let arg of arguments) {
+  //   yield arg;
+  // }
+
+      //short form:
+  yield* arguments;
+}
+
+var it_2 = ArrayItertor2(1, 2, 3);  //note to square brakets []
+//console.log(it_2.next().value);  //log '[1, 2, 3]'
+
+//to log each item one at a time
+console.log(it_2.next().value);  //log '1'
+console.log(it_2.next().value);  //log '2'
+console.log(it_2.next().value);  //log '3'
+console.log(it_2.next().value);  //log 'undefined'
+
+
+
+</script>
+
+</html>

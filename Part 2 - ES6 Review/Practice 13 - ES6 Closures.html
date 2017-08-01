@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+
+  <script type="text/javascript">
+
+//Closures
+
+//Closures remember their creating environment
+//they can create functions that can return other fucntions
+
+let call = () => {
+  let secret = 'ES6 rocks!';
+
+  let reveal = () => {
+    console.log(secret);
+  }
+  reveal();
+  //OR
+  return reveal;
+}
+
+//by itself this cannot be logged outside the function
+//console.log(secret);
+
+call();
+//this allows us to post "reveal" to the log
+
+//Or
+let unveil = call();
+unveil();
+
+
+
+//Function Factories
+const addSuffix = (x) => {
+  const concat = (y) => {
+    return y + x;
+  }
+  return concat;
+}
+
+let add_ness = addSuffix("ness");
+console.log(add_ness);
+
+//examples:
+let h = add_ness("happi");
+console.log(h);
+
+console.log(add_ness("joyful"));
+
+let add_ly = addSuffix("ly");
+console.log(add_ly("joyful"));
+
+
+
+//Math related function factory:
+const product = (x) => {
+  return y => {
+    return y * x;
+  }
+}
+
+let mult5 = product(5);
+console.log(mult5(3));  //logs 15
+
+let double = product(2);
+console.log(double(9)); //logs 18
+
+
+//Example of shortened version:
+const product2 = p => j => p * j;
+
+let triple = product2(3);
+console.log(triple(10));
+
+
+//QUIZ:
+
+/*
+Addition Factory (Closures)
+
+James wants a quick way to add different pairs of numbers.
+Luckily, he knows that he can take advantage of function factories
+with closures to do so. However, his function factory is incomplete.
+Help him finish it!
+
+Problem:
+const addFactory = (x) => {
+  // TODO
+  // return an inner function with one parameter, y;
+  // the inner funcion returns x + y;
+};
+*/
+
+const addFactory = x => y => x + y;
+
+const add50 = addFactory(50);
+const add30 = addFactory(30);
+
+  </script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+
+<script type="text/javascript">
+
+//PRIVATE METHODS
+//Javascript does not support private methods natively like other languages such as Java.
+//But private methods can be emulated using closures
+
+//Using Closures with Private Methods in ES6 is called the "Module Pattern"
+
+const budget = () => {
+  let balance = 0;
+  let changeBal = (val) => {
+    return balance += val;
+  }
+  const deposit20 = () => changeBal(20);
+  const deposit10 = () => changeBal(10);
+  const deposit50 = () => changeBal(50);
+  const withdraw20 = () => changeBal(-20);
+
+  //to check the balance:
+  const check = () => balance;
+
+  //give the user access to this deposit20 method:
+  //return an object that is holding a "deposit20" key mapping to our "deposit20" method
+  return {
+    deposit20: deposit20,
+    deposit10: deposit10,
+    deposit50: deposit50,
+    withdraw20: withdraw20,
+    check: check
+  }
+
+  /*NOTE in ES6 objects, when keys and values are the same, you can just write this:
+
+  return { deposit20, deposit10, deposit50, withdraw20, check }
+
+  */
+}
+
+let wallet = budget();
+console.log(wallet);
+wallet.deposit20();
+
+//console.log(wallet.balance);
+//this doesn't work because we are not returning "balance" within our object
+//we are only returning methods that ave access to the budget, but nothe actual budget "balance itself"
+//it is a private variable
+
+console.log(wallet.check());
+
+
+
+wallet.deposit10();
+wallet.deposit50();
+wallet.withdraw20();
+console.log(wallet.check());
+
+
+//Other NOTE:
+//Lexical Scoping is a concept in JavaScript that programs
+//keep track of variable locations to understand where to access them.
+
+</script>
+
+
+</html>
