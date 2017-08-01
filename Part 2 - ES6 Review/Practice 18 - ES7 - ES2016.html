@@ -43,8 +43,72 @@ console.log(f);  //logs false
 //better support for accessing elements in objects! the values and keys
 //with .values and .entries methods
 
-
 //more support for async functions
+
+console.log("For ES8 . ES2017:");
+
+//In ES6:
+let obj = { a: 'one', b: 'two', c: 'three'};
+let keys = Object.keys(obj);
+console.log(keys);
+
+//in ES8:
+let values = Object.values(obj);
+console.log(values);
+
+//for creating a pair of values and keys. ie each entry in the object
+let entries = Object.entries(obj);
+console.log(entries);
+
+
+//for interating through an object to print an object
+for (let entry of entries) {
+  console.log(`key: ${entry[0]}, value: ${entry[1]}`);
+}
+
+
+
+//HUGE proposal for ES8:  Async functions
+
+console.log("ES8 Async Functions:");
+
+async function async_one() {
+  return "one";
+}
+async_one().then(response => console.log(response));
+
+
+async function async_two() {
+  throw new Error('Issue with async!');
+}
+async_two().catch(error => console.log(error));
+
+
+//keyword "await"
+//to combine async_one and async_3
+async function async_3() {
+  return "three";
+}
+
+async function async_4() {
+  const one = await async_one();
+  console.log(one);
+  const three = await async_3();
+  console.log(three);
+}
+
+async_4();
+
+async function async_5() {
+  const [res_one, res_three] = await Promise.all(
+    [async_one(), async_3()]
+  )
+  console.log("Last ES8 exercise (logging out of order):");
+  console.log(res_one, res_three);
+}
+
+async_5();
+
 
 </script>
 
